@@ -4,6 +4,7 @@ import datetime
 import requests
 import logging
 import isodate
+from datetime import datetime, timedelta
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -26,11 +27,13 @@ CHANNEL_IDS = [
 
 def get_latest_video(channel_id):
     try:
+        eight_hours_ago = (datetime.utcnow() - timedelta(hours=8)).isoformat() + 'Z'
         search_response = youtube.search().list(
             part='snippet',
             channelId=channel_id,
             order='date',
             type='video',
+            publishedAfter=eight_hours_ago,
             maxResults=1
         ).execute()
         
