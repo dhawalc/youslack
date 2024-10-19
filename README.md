@@ -1,4 +1,4 @@
-# YouTubeSlack Notification
+# YouTubeSlack Notifications
 
 This project automatically sends notifications to a Slack channel when new YouTube videos are uploaded to specified channels.
 
